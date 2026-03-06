@@ -8,22 +8,22 @@ def run_deals_tests() -> None:
     db_manager = DatabaseContextManager()
     repo = DealsRepository(deal_model=Deal, db_manager=db_manager)
     #  1. Создание сделок (одна некорректная) 
-    print("\n─ 1. Создание сделок ─")
+    print("Создание сделок ─")
     repo.create_deal(*DEALS_DATA)
     #  2. Получение всех сделок (Pydantic-схемы) 
-    print("\n─ 2. Все сделки (Pydantic) ─")
+    print(" Все сделки (Pydantic) ─")
     deals = repo.get_deals()
     for deal in deals:
         print(f"  id={deal.id}  title='{deal.title}'  type={deal.deal_type.value}")
     # 3. Получение всех сделок (словари)
-    print("\n─ 3. Все сделки (словари) ─")
+    print(" Все сделки (словари) ─")
     dicts = repo.get_deals_dicts()
     for d in dicts:
         print(f"  {d}")
     #4. Получение одной сделки 
     if deals:
         first_id = deals[0].id
-        print(f"\n─ 4. Получить сделку id={first_id} ─")
+        print(f" Получить сделку id={first_id} ─")
         single = repo.get_deal(first_id)
         if single:
             print(f"  Найдена: '{single.title}'")
@@ -31,7 +31,7 @@ def run_deals_tests() -> None:
     #  5. Обновление сделки 
     if deals:
         first_id = deals[0].id
-        print(f"\n─ 5. Обновить сделку id={first_id} ─")
+        print(f" Обновить сделку id={first_id} ─")
         updated = repo.update_deal(
             deal_id=first_id,
             deal_data={"comment": "Комментарий обновлён в ходе теста."},
@@ -44,7 +44,7 @@ def run_deals_tests() -> None:
         first_deal = deals[0]
         if first_deal.persons_in_charge:
             user_id = first_deal.persons_in_charge[0].id
-            print(f"\n─ 6. Обновить пользователя id={user_id} в сделке ─")
+            print(f"Обновить пользователя id={user_id} в сделке ─")
             updated = repo.update_deal(
                 deal_id=first_deal.id,
                 user_id=user_id,
@@ -58,7 +58,7 @@ def run_deals_tests() -> None:
     #  7. Удаление сделки 
     if deals:
         last_id = deals[-1].id
-        print(f"\n─ 7. Удалить сделку id={last_id} ─")
+        print(f"Удалить сделку id={last_id} ─")
         repo.delete_deal(last_id)
         print(f"  Сделок после удаления: {len(repo.get_deals())}")
 
