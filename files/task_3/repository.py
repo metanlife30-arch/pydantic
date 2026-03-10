@@ -39,7 +39,7 @@ class DealsRepository:
         print("[DealsRepository] Модель сделки удалена.")
         self.__deal_model = None
 
-    # ── CRUD-методы ──────────────────────────────────────────────────────────
+    #  CRUD-методы 
 
     def create_deal(self, *deals_data: Dict[str, Any]) -> None:
         """Создаёт одну или несколько сделок и сохраняет их в хранилище."""
