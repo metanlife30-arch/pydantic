@@ -63,7 +63,3 @@ def run_deals_tests() -> None:
         print(f"  Сделок после удаления: {len(repo.get_deals())}")
 
 
-
-
-if __name__ == "__main__":
-    run_deals_tests()

@@ -1,7 +1,6 @@
-from fastapi import FastAPI, HTTPException, Path, Query,Depends
-from typing import Optional, List, Dict, Annotated
+from fastapi import FastAPI
 import uvicorn
-from files.task_2 import test_validate_call
+from files.task_2 import *
 # Создание экземпляра FastAPI
 
 app = FastAPI()
